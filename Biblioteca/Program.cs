@@ -8,11 +8,16 @@ namespace Biblioteca
 {
     class Program
     {
+        const int _MAXLINHA = 100;
+        const int _MAXCOLUNA = 4;
+        
         static void Main(string[] args)
         {
             string opcao;
             bool sair = false;
-            
+            string[,] alunos = new string[_MAXLINHA, _MAXCOLUNA];
+            string[,] livros = new string[_MAXLINHA, _MAXCOLUNA];
+
             while (!sair)
             {
                 Console.Clear();
@@ -36,7 +41,11 @@ namespace Biblioteca
 
                 Console.WriteLine("             ║                                               ║    ");
 
-                Console.WriteLine("             ║ 3 SAIR                                        ║    ");
+                Console.WriteLine("             ║ 3 LISTAR ALUNOS                               ║    ");
+
+                Console.WriteLine("             ║                                               ║    ");
+
+                Console.WriteLine("             ║ 4 SAIR                                        ║    ");
 
                 Console.WriteLine("             ╚═══════════════════════════════════════════════╝    ");
 
@@ -46,13 +55,15 @@ namespace Biblioteca
                 Console.Write("DIGITE UMA OPÇÃO : ");
 
 
-                //============================CADASTRO DE ALUNOS===========================
                 opcao = Console.ReadLine();
 
                 switch (int.Parse(opcao))
                 {
                     case 1:
-                        cadastraAluno();
+                        cadastraAluno(alunos);
+                        break;
+                    case 2:
+                        cadastraLivro();
                         break;
                     default:
                         sair = true;
@@ -62,8 +73,13 @@ namespace Biblioteca
             Console.ReadKey();
          }
 
-        static void cadastraAluno() {
-            string nome, endereco, telefone, email, continua;
+        private static void cadastraLivro()
+        {
+            string titulo, autor, editora, edicao, continua;
+        }
+
+        static void cadastraAluno(string[,] matriz) {
+            string nome, endereco, cpf, email, continua;
 
             do
             {
@@ -83,12 +99,13 @@ namespace Biblioteca
                 Console.Write("■ Entre com o endereço do Aluno: ");
                 endereco = Console.ReadLine();
 
-                Console.Write("■ Entre com o telefone do Aluno: ");
-                telefone = Console.ReadLine();
+                Console.Write("■ Entre com o CPF do Aluno: ");
+                cpf = Console.ReadLine();
 
                 Console.Write("■ Entre com o email do Aluno: ");
                 email = Console.ReadLine();
-
+                
+                //matriz[matriz.]
                 Console.WriteLine("");
                 Console.WriteLine("O CADASTRO DO ALUNO " + "'" + nome + "'" + " FOI REALIZADO COM SUCESSO!");
                 Console.WriteLine("");
